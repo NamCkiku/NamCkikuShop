@@ -41,6 +41,8 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -49,6 +51,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Migrations\201606240605047_InitialDB.cs" />
+    <Compile Include="Migrations\201606240605047_InitialDB.Designer.cs">
+      <DependentUpon>201606240605047_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Footer.cs" />
+    <Compile Include="Models\Menu.cs" />
+    <Compile Include="Models\MenuGroup.cs" />
+    <Compile Include="Models\NamCkikuShop.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetail.cs" />
+    <Compile Include="Models\Page.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\PostCategory.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductCategory.cs" />
+    <Compile Include="Models\Slide.cs" />
+    <Compile Include="Models\SupportOnline.cs" />
+    <Compile Include="Models\SystemConfig.cs" />
+    <Compile Include="Models\Tag.cs" />
+    <Compile Include="Models\VisitorStatistic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +83,11 @@
       <Project>{5ddbf4f2-049c-4949-8ffa-a9f8b50ab3dc}</Project>
       <Name>NamCkikuShop.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201606240605047_InitialDB.resx">
+      <DependentUpon>201606240605047_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
