@@ -1,17 +1,21 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace NamCkikuShop.Entities.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class Footer
+    [Table("Footers")]
+    public class Footer
     {
-        [StringLength(250)]
-        public string ID { get; set; }
+        [Key]
+        [MaxLength(50)]
+        public string ID { set; get; }
 
-        [Column(TypeName = "ntext")]
-        public string Content { get; set; }
+        [Required]
+        public string Content { set; get; }
     }
 }

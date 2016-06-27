@@ -1,12 +1,14 @@
-﻿namespace NamCkikuShop.Repository.Infrastructure
+﻿using NamCkikuShop.Entities.Models;
+
+namespace NamCkikuShop.Repository.Infrastructure
 {
     public class DbFactory : Disposable, IDbFactory
     {
-        private NamCkikuShop.Entities.Models.NamCkikuShop dbContext;
+        private NamCkikuShopDbContext dbContext;
 
-        public NamCkikuShop.Entities.Models.NamCkikuShop Init()
+        public NamCkikuShopDbContext Init()
         {
-            return dbContext ?? (dbContext = new NamCkikuShop.Entities.Models.NamCkikuShop());
+            return dbContext ?? (dbContext = new NamCkikuShopDbContext());
         }
 
         protected override void DisposeCore()

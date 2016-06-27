@@ -1,19 +1,23 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace NamCkikuShop.Entities.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class VisitorStatistic
+    [Table("VisitorStatistics")]
+    public class VisitorStatistic
     {
-        public Guid ID { get; set; }
-
-        public DateTime VisitedDate { get; set; }
+        [Key]
+        public Guid ID { set; get; }
 
         [Required]
-        [StringLength(50)]
-        public string IPAdress { get; set; }
+        public DateTime VisitedDate { set; get; }
+
+        [MaxLength(50)]
+        public string IPAddress { set; get; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NamCkikuShop.Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,14 +10,14 @@ namespace NamCkikuShop.Repository.Infrastructure
     public class UnitOfWork : IUnitOfWork
     {
         private readonly IDbFactory dbFactory;
-        private NamCkikuShop.Entities.Models.NamCkikuShop dbContext;
+        private NamCkikuShopDbContext dbContext;
 
         public UnitOfWork(IDbFactory dbFactory)
         {
             this.dbFactory = dbFactory;
         }
 
-        public NamCkikuShop.Entities.Models.NamCkikuShop DbContext
+        public NamCkikuShopDbContext DbContext
         {
             get { return dbContext ?? (dbContext = dbFactory.Init()); }
         }

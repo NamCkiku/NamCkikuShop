@@ -1,60 +1,41 @@
+﻿using NamCkikuShop.Entities.Abstract;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace NamCkikuShop.Entities.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class PostCategory
+    [Table("PostCategories")]
+    public class PostCategory : Auditable
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PostCategory()
-        {
-            Posts = new HashSet<Post>();
-        }
-
-        public int ID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
 
         [Required]
-        [StringLength(250)]
-        public string Name { get; set; }
+        [MaxLength(256)]
+        public string Name { set; get; }
 
         [Required]
-        [StringLength(250)]
-        public string Alias { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(256)]
+        public string Alias { set; get; }
 
-        public int? ParentID { get; set; }
+        [MaxLength(500)]
+        public string Description { set; get; }
 
-        [StringLength(500)]
-        public string Image { get; set; }
+        public int? ParentID { set; get; }
+        public int? DisplayOrder { set; get; }
 
-        public int? DisplayOrder { get; set; }
+        [MaxLength(256)]
+        public string Image { set; get; }
 
-        [StringLength(250)]
-        public string MetaKeyword { get; set; }
+        public bool? HomeFlag { set; get; }
 
-        [StringLength(250)]
-        public string MetaDescription { get; set; }
-
-        public DateTime? CreateDate { get; set; }
-
-        [StringLength(250)]
-        public string CreateBy { get; set; }
-
-        public DateTime? UpdateDate { get; set; }
-
-        [StringLength(50)]
-        public string UpdateBy { get; set; }
-
-        public bool Status { get; set; }
-
-        public bool? HomeFlag { get; set; }
-
-        [Column(TypeName = "ntext")]
-        public string Description { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Post> Posts { get; set; }
+        public virtual IEnumerable<Post> Posts { set; get; }
     }
 }

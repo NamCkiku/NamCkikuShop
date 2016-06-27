@@ -1,28 +1,30 @@
+﻿using NamCkikuShop.Entities.Abstract;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace NamCkikuShop.Entities.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    [Table("Page")]
-    public partial class Page
+    [Table("Pages")]
+    public class Page : Auditable
     {
-        public int ID { get; set; }
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int ID { set; get; }
 
-        [StringLength(250)]
-        public string Name { get; set; }
+        [Required]
+        [MaxLength(256)]
+        public string Name { set; get; }
 
-        [Column(TypeName = "ntext")]
-        public string Content { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(256)]
+        [Required]
+        public string Alias { set; get; }
 
-        [StringLength(250)]
-        public string MetaKeyword { get; set; }
-
-        [StringLength(250)]
-        public string MetaDescription { get; set; }
-
-        public bool? Status { get; set; }
+        public string Content { set; get; }
     }
 }

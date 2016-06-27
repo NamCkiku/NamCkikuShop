@@ -8,37 +8,26 @@ using System.Threading.Tasks;
 
 namespace NamCkikuShop.Entities.Models
 {
-    [Table("SupportOnlines")]
-    public class SupportOnline
+    [Table("Feedbacks")]
+    public class Feedback
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int ID { set; get; }
 
+        [StringLength(250)]
         [Required]
-        [MaxLength(50)]
         public string Name { set; get; }
 
-        [MaxLength(50)]
-        public string Department { set; get; }
-
-        [MaxLength(50)]
-        public string Skype { set; get; }
-
-        [MaxLength(50)]
-        public string Mobile { set; get; }
-
-        [MaxLength(50)]
+        [StringLength(250)]
         public string Email { set; get; }
 
-        [MaxLength(50)]
-        public string Yahoo { set; get; }
+        [StringLength(500)]
+        public string Message { set; get; }
 
-        [MaxLength(50)]
-        public string Facebook { set; get; }
+        public DateTime CreatedDate { set; get; }
 
+        [Required]
         public bool Status { set; get; }
-
-        public int? DisplayOrder { set; get; }
     }
 }

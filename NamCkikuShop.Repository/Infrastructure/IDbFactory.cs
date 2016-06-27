@@ -1,9 +1,10 @@
-﻿using System;
+﻿using NamCkikuShop.Entities.Models;
+using System;
 
 namespace NamCkikuShop.Repository.Infrastructure
 {
     public interface IDbFactory : IDisposable
     {
-        NamCkikuShop.Entities.Models.NamCkikuShop Init();
+        NamCkikuShopDbContext Init();
     }
 }

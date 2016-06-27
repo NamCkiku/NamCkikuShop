@@ -1,22 +1,27 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
 namespace NamCkikuShop.Entities.Models
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
-    public partial class SystemConfig
+    [Table("SystemConfigs")]
+    public class SystemConfig
     {
-        public int ID { get; set; }
+        [Key]
+        public int ID { set; get; }
 
         [Required]
-        [StringLength(50)]
-        public string Code { get; set; }
+        [Column(TypeName = "varchar")]
+        [MaxLength(50)]
+        public string Code { set; get; }
 
-        [StringLength(250)]
-        public string ValueString { get; set; }
+        [MaxLength(50)]
+        public string ValueString { set; get; }
 
-        public int? ValueInt { get; set; }
+        public int? ValueInt { set; get; }
     }
 }
