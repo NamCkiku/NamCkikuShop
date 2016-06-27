@@ -1,19 +1,18 @@
 namespace NamCkikuShop.Entities.Migrations
 {
-    using Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<NamCkikuShopDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<NamCkikuShop.Entities.Models.NamCkikuShopDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(NamCkikuShopDbContext context)
+        protected override void Seed(NamCkikuShop.Entities.Models.NamCkikuShopDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 

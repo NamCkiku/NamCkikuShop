@@ -7,13 +7,13 @@ namespace NamCkikuShop.Entities.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class InitialDB : IMigrationMetadata
+    public sealed partial class InitiaDB : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(InitialDB));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(InitiaDB));
         
         string IMigrationMetadata.Id
         {
-            get { return "201606240605047_InitialDB"; }
+            get { return "201606270356535_InitiaDB"; }
         }
         
         string IMigrationMetadata.Source
