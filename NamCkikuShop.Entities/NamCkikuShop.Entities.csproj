@@ -53,9 +53,9 @@
   <ItemGroup>
     <Compile Include="Abstract\Auditable.cs" />
     <Compile Include="Abstract\IAuditable.cs" />
-    <Compile Include="Migrations\201606240605047_InitialDB.cs" />
-    <Compile Include="Migrations\201606240605047_InitialDB.Designer.cs">
-      <DependentUpon>201606240605047_InitialDB.cs</DependentUpon>
+    <Compile Include="Migrations\201606270356535_InitiaDB.cs" />
+    <Compile Include="Migrations\201606270356535_InitiaDB.Designer.cs">
+      <DependentUpon>201606270356535_InitiaDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Feedback.cs" />
@@ -90,8 +90,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201606240605047_InitialDB.resx">
-      <DependentUpon>201606240605047_InitialDB.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201606270356535_InitiaDB.resx">
+      <DependentUpon>201606270356535_InitiaDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
