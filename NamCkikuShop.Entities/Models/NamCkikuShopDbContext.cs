@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace NamCkikuShop.Entities.Models
 {
-    public class NamCkikuShopDbContext: DbContext
+    public class NamCkikuShopDbContext: IdentityDbContext<ApplicationUser>
     {
         public NamCkikuShopDbContext() : base("NamCkikuShopConnection")
         {
@@ -45,7 +46,10 @@ namespace NamCkikuShop.Entities.Models
         }
         protected override void OnModelCreating(DbModelBuilder builder)
         {
-
+            builder.Entity<IdentityUserRole>().HasKey(i => new { i.UserId, i.RoleId });
+            builder.Entity<IdentityUserLogin>().HasKey(i => i.UserId);
+            //builder.Entity<IdentityRole>().ToTable("ApplicationRoles");
+            //builder.Entity<IdentityUserClaim>().HasKey(i => i.UserId).ToTable("ApplicationUserClaims");
         }
     }
 }
