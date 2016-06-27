@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NamCkikuShop.Repository.Repositories
 {
-    public interface IPostCategoryRepository
+    public interface IPostCategoryRepository: IRepository<PostCategory>
     {
 
     }

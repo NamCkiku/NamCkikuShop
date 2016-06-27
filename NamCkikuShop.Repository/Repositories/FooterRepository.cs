@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NamCkikuShop.Repository.Repositories
 {
-    public interface IFooterRepository
+    public interface IFooterRepository: IRepository<Footer>
     {
 
     }
