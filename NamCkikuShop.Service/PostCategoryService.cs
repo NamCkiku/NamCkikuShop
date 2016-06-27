@@ -11,9 +11,9 @@ namespace NamCkikuShop.Service
 {
     public interface IPostCategoryService
     {
-        void Add(PostCategory post);
+        PostCategory Add(PostCategory post);
         void Update(PostCategory post);
-        void Delete(int id);
+        PostCategory Delete(int id);
         IEnumerable<PostCategory> GetAll();
         IEnumerable<PostCategory> GetAllByParentID(int parentID);
         PostCategory GetByID(int id);
@@ -29,15 +29,15 @@ namespace NamCkikuShop.Service
             this._IUnitOfWork = IUnitOfWork;
         }
 
-        public void Add(PostCategory post)
+        public PostCategory Add(PostCategory post)
         {
-            _postCategoryRepository.Add(post);
+            return _postCategoryRepository.Add(post);
         }
 
-        public void Delete(int id)
+        public PostCategory Delete(int id)
         {
-            _postCategoryRepository.Delete(id);
-        }
+            return _postCategoryRepository.Delete(id);
+        } 
 
         public IEnumerable<PostCategory> GetAll()
         {

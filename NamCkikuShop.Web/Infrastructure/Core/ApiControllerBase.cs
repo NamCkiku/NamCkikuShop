@@ -14,7 +14,7 @@ namespace NamCkikuShop.Web.Infrastructure.Core
 {
     public class ApiControllerBase : ApiController
     {
-        private IErrorService _errorService
+        private IErrorService _errorService;
         public ApiControllerBase(IErrorService errorService)
         {
             this._errorService = errorService;
@@ -42,9 +42,9 @@ namespace NamCkikuShop.Web.Infrastructure.Core
             catch (DbUpdateException dbEx)
             {
                 LogError(dbEx);
-                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
+                response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, dbEx.InnerException.Message);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogError(ex);
                 response = requestMessage.CreateResponse(HttpStatusCode.BadRequest, ex.Message);
