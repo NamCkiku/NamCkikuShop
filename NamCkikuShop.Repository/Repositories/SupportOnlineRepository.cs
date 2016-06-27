@@ -8,11 +8,11 @@ using System.Threading.Tasks;
 
 namespace NamCkikuShop.Repository.Repositories
 {
-    public interface ISupportOnlineRepository
+    public interface ISupportOnlineRepository: IRepository<SupportOnline>
     {
 
     }
-    public class SupportOnlineRepository : RepositoryBase<MenuGroup>, ISupportOnlineRepository
+    public class SupportOnlineRepository : RepositoryBase<SupportOnline>, ISupportOnlineRepository
     {
         public SupportOnlineRepository(IDbFactory dbFactory)
             : base(dbFactory)
