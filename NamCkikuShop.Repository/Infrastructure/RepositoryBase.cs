@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NamCkikuShop.Entities.Models;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace NamCkikuShop.Repository.Infrastructure
     public abstract class RepositoryBase<T> : IRepository<T> where T : class
     {
         #region Properties
-        private NamCkikuShop.Entities.Models.NamCkikuShop dataContext;
+        private NamCkikuShopDbContext dataContext;
         private readonly IDbSet<T> dbSet;
 
         protected IDbFactory DbFactory
@@ -20,7 +21,7 @@ namespace NamCkikuShop.Repository.Infrastructure
             private set;
         }
 
-        protected NamCkikuShop.Entities.Models.NamCkikuShop DbContext
+        protected NamCkikuShopDbContext DbContext
         {
             get { return dataContext ?? (dataContext = DbFactory.Init()); }
         }

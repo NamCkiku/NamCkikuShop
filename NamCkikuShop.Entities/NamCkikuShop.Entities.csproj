@@ -51,25 +51,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\Auditable.cs" />
+    <Compile Include="Abstract\IAuditable.cs" />
     <Compile Include="Migrations\201606240605047_InitialDB.cs" />
     <Compile Include="Migrations\201606240605047_InitialDB.Designer.cs">
       <DependentUpon>201606240605047_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Feedback.cs" />
     <Compile Include="Models\Footer.cs" />
     <Compile Include="Models\Menu.cs" />
     <Compile Include="Models\MenuGroup.cs" />
-    <Compile Include="Models\NamCkikuShop.cs" />
+    <Compile Include="Models\NamCkikuShopDbContext.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderDetail.cs" />
     <Compile Include="Models\Page.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\PostCategory.cs" />
-    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\PostTag.cs" />
     <Compile Include="Models\ProductCategory.cs" />
-    <Compile Include="Models\Slide.cs" />
+    <Compile Include="Models\Productcs.cs" />
+    <Compile Include="Models\ProductTag.cs" />
+    <Compile Include="Models\Slidecs.cs" />
     <Compile Include="Models\SupportOnline.cs" />
-    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\SystemConfig.cs" />
     <Compile Include="Models\Tag.cs" />
     <Compile Include="Models\VisitorStatistic.cs" />
