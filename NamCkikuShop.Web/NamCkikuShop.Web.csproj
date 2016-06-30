@@ -218,6 +218,8 @@
     <Content Include="app\components\home\homeController.js" />
     <Content Include="app\components\home\homeView.html" />
     <Content Include="app\components\productCategories\productCategory.module.js" />
+    <Content Include="app\components\productCategories\productCategoryAddController.js" />
+    <Content Include="app\components\productCategories\productCategoryAddView.html" />
     <Content Include="app\components\productCategories\productCategoryListController.js" />
     <Content Include="app\components\productCategories\productCategoryListView.html" />
     <Content Include="app\components\products\product.module.js" />
@@ -232,6 +234,7 @@
     <Content Include="app\Shared\filters\statusFilters.js" />
     <Content Include="app\Shared\modules\namckikishop.common.js" />
     <Content Include="app\Shared\services\apiService.js" />
+    <Content Include="app\Shared\services\notificationService.js" />
     <Content Include="Content\Administrator\css\AdminLTE.css" />
     <Content Include="Content\Administrator\css\AdminLTE.min.css" />
     <Content Include="Content\Administrator\css\skins\skin-black-light.css" />
@@ -1081,6 +1084,8 @@
     <Content Include="Scripts\Plugins\fastclick\fastclick.min.js" />
     <Content Include="Scripts\Plugins\slimScroll\jquery.slimscroll.js" />
     <Content Include="Scripts\Plugins\slimScroll\jquery.slimscroll.min.js" />
+    <Content Include="Scripts\Plugins\toastr-master\toastr.css" />
+    <Content Include="Scripts\Plugins\toastr-master\toastr.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
