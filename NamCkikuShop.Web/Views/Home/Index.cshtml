@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html>
+<html ng-app="namckikuShop">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -214,21 +214,19 @@
                             <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i class="fa fa-angle-left pull-right"></i>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="../../index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                            <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
+                            <li><a ui-sref="product"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
+                            <li><a ui-sref="product_add"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
                         </ul>
                     </li>
                     <li class="treeview">
                         <a href="#">
                             <i class="fa fa-files-o"></i>
-                            <span>Layout Options</span>
+                            <span>Sản Phẩm</span>
                             <span class="label label-primary pull-right">4</span>
                         </a>
                         <ul class="treeview-menu">
-                            <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-                            <li><a href="../layout/boxed.html"><i class="fa fa-circle-o"></i> Boxed</a></li>
-                            <li><a href="../layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                            <li><a href="../layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed Sidebar</a></li>
+                            <li><a ui-sref="productCategories"><i class="fa fa-circle-o"></i> Danh Mục Sản Phẩm</a></li>
+                            <li><a ui-sref="product"><i class="fa fa-circle-o"></i> Sản Phẩm</a></li>
                         </ul>
                     </li>
                     <li>
@@ -350,7 +348,9 @@
         <!-- =============================================== -->
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-           
+           <div ui-view>
+
+           </div>
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
@@ -543,5 +543,17 @@
     <script src="~/Content/Administrator/js/app.min.js"></script>
     <!-- AngularJs -->
     <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/AngularUI/ui-router.js"></script>
+    <script src="~/app/Shared/modules/namckikishop.common.js"></script>
+    <script src="~/app/Shared/filters/statusFilters.js"></script>
+    <script src="~/app/Shared/services/apiService.js"></script>
+    <script src="~/app/Shared/directives/pagerDirectives.js"></script>
+    <script src="~/app/components/products/product.module.js"></script>
+    <script src="~/app/components/productCategories/productCategory.module.js"></script>
+    <script src="~/app/app.js"></script>
+    <script src="~/app/components/products/productAddController.js"></script>
+    <script src="~/app/components/products/productListController.js"></script>
+    <script src="~/app/components/home/homeController.js"></script>
+    <script src="~/app/components/productCategories/productCategoryListController.js"></script>
 </body>
 </html>
