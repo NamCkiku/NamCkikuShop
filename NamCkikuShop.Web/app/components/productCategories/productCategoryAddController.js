@@ -2,8 +2,8 @@
 (function (app) {
     app.controller('productCategoryAddController', productCategoryAddController);
 
-    productCategoryAddController.$inject = ['apiService', '$scope', 'notificationService', '$state'];
-    function productCategoryAddController(apiService, $scope, notificationService, $state) {
+    productCategoryAddController.$inject = ['apiService', '$scope', 'notificationService', '$state', 'commonService'];
+    function productCategoryAddController(apiService, $scope, notificationService, $state, commonService) {
         $scope.productCategory = {
             CreatedDate: new Date(),
             Status: true,
@@ -11,7 +11,11 @@
         $scope.parentCategories = [];
         $scope.AddProductCategory = AddProductCategory;
 
+        $scope.GetSeoTitle = GetSeoTitle;
 
+        function GetSeoTitle() {
+            $scope.productCategory.Alias = commonService.getSeoTitle($scope.productCategory.Name);
+        }
 
         function AddProductCategory() {
             apiService.post('/api/productcategory/create', $scope.productCategory,
@@ -32,5 +36,6 @@
             });
         }
         loadParentCategory();
+        GetSeoTitle();
     }
 })(angular.module('namckikuShop.common'));
