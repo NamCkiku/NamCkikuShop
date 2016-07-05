@@ -1,4 +1,5 @@
-﻿using NamCkikuShop.Entities.Models;
+﻿using NamCkikuShop.Common;
+using NamCkikuShop.Entities.Models;
 using NamCkikuShop.Repository.Infrastructure;
 using NamCkikuShop.Repository.Repositories;
 using System;
@@ -19,24 +20,73 @@ namespace NamCkikuShop.Service
         Product GetByID(int id);
         void SaveChanges();
     }
-    public class ProductService: IProductService
+    public class ProductService : IProductService
     {
-        IProductRepository _productRepository;
-        IUnitOfWork _IUnitOfWork;
-        public ProductService(IProductRepository productRepository, IUnitOfWork IUnitOfWork)
+        private IProductRepository _productRepository;
+        private IUnitOfWork _IUnitOfWork;
+        private ITagsRepository _tagRepository;
+        private IProductTagRepository _productTagRepository;
+
+        public ProductService(IProductRepository productRepository, IProductTagRepository productTagRepository,
+            ITagsRepository _tagRepository, IUnitOfWork IUnitOfWork)
         {
             this._productRepository = productRepository;
+            this._productTagRepository = productTagRepository;
+            this._tagRepository = _tagRepository;
             this._IUnitOfWork = IUnitOfWork;
         }
 
         public Product Add(Product product)
         {
-            return _productRepository.Add(product);
+            var productdb = _productRepository.Add(product);
+            _IUnitOfWork.Commit();
+            if (!string.IsNullOrEmpty(product.Tags))
+            {
+                string[] tags = product.Tags.Split(',');
+                for(var i=0;i<tags.Length;i++)
+                {
+                    var tagId = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagId;
+                        tag.Name = tags[i];
+                        tag.Type = CommonConstants.ProductTag;
+                        _tagRepository.Add(tag);
+                    }
+                    ProductTag productTag = new ProductTag();
+                    productTag.ProductID = product.ID;
+                    productTag.TagID = tagId;
+                    _productTagRepository.Add(productTag);
+                }
+            }
+            return productdb;
         }
 
         public void Update(Product product)
         {
             _productRepository.Update(product);
+            if (!string.IsNullOrEmpty(product.Tags))
+            {
+                string[] tags = product.Tags.Split(',');
+                for (var i = 0; i < tags.Length; i++)
+                {
+                    var tagId = StringHelper.ToUnsignString(tags[i]);
+                    if (_tagRepository.Count(x => x.ID == tagId) == 0)
+                    {
+                        Tag tag = new Tag();
+                        tag.ID = tagId;
+                        tag.Name = tags[i];
+                        tag.Type = CommonConstants.ProductTag;
+                        _tagRepository.Add(tag);
+                    }
+                    _productTagRepository.DeleteMulti(x => x.ProductID == product.ID);
+                    ProductTag productTag = new ProductTag();
+                    productTag.ProductID = product.ID;
+                    productTag.TagID = tagId;
+                    _productTagRepository.Add(productTag);
+                }
+            }
         }
 
         public Product Delete(int id)

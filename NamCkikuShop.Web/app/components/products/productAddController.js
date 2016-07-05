@@ -27,7 +27,7 @@
             apiService.post('api/product/create', $scope.product,
                 function (result) {
                     notificationService.displaySuccess(result.data.Name + ' đã được thêm mới.');
-                    $state.go('products');
+                    $state.go('product');
                 }, function (error) {
                     notificationService.displayError('Thêm mới không thành công.');
                 });
@@ -49,18 +49,18 @@
             }
             finder.popup();
         }
-        //$scope.moreImages = [];
+        $scope.moreImages = [];
 
-        //$scope.ChooseMoreImage = function () {
-        //    var finder = new CKFinder();
-        //    finder.selectActionFunction = function (fileUrl) {
-        //        $scope.$apply(function () {
-        //            $scope.moreImages.push(fileUrl);
-        //        })
+        $scope.ChooseMoreImage = function () {
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (fileUrl) {
+                $scope.$apply(function () {
+                    $scope.moreImages.push(fileUrl);
+                })
 
-        //    }
-        //    finder.popup();
-        //}
+            }
+            finder.popup();
+        }
 
         loadProductCategory();
     }
