@@ -1,0 +1,15 @@
+﻿@model IEnumerable<NamCkikuShop.Web.Models.ViewModels.SlideViewModel>
+<div class="col-md-9 col-md-offset-3">
+    <div class="flexslider ma-nivoslider">
+        <div class="ma-loading"></div>
+
+        <div id="ma-inivoslider-banner7" class="slides">
+            @foreach (var item in Model)
+            {
+                <img src="@item.Image" class="dn" alt="" title="#banner7-caption1" />
+
+            }
+        </div>
+
+    </div><!-- /.flexslider -->
+</div>

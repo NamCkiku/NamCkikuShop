@@ -1,5 +1,4 @@
-﻿using NamCkikuShop.Common;
-using NamCkikuShop.Entities.Models;
+﻿using NamCkikuShop.Entities.Models;
 using NamCkikuShop.Repository.Infrastructure;
 using NamCkikuShop.Repository.Repositories;
 using System;
@@ -10,40 +9,40 @@ using System.Threading.Tasks;
 
 namespace NamCkikuShop.Service
 {
-    public interface IFooterService
+    public interface ISliderService
     {
-        void Add(Footer post);
-        void Update(Footer post);
+        void Add(Slide slide);
+        void Update(Slide slide);
         void Delete(int id);
-        IEnumerable<Footer> GetAll();
-       Footer GetFooter();
+        IEnumerable<Slide> GetAll();
+        IEnumerable<Slide> GetSlide();
         //IEnumerable<Footer> GetAllPaging(int page, int pageSize, out int totalRow);
         //Footer GetByID(int id);
         //IEnumerable<Footer> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow);
         void SaveChanges();
     }
-    public class FooterService : IFooterService
+    public class SliderService : ISliderService
     {
-        IFooterRepository _footerRepository;
-        IUnitOfWork _footerIUnitOfWork;
-        public FooterService(IFooterRepository footerRepository, IUnitOfWork footerIUnitOfWork)
+        ISlideRepository _slideRepository;
+        IUnitOfWork _IUnitOfWork;
+        public SliderService(ISlideRepository slideRepository, IUnitOfWork IUnitOfWork)
         {
-            this._footerRepository = footerRepository;
-            this._footerIUnitOfWork = footerIUnitOfWork;
+            this._slideRepository = slideRepository;
+            this._IUnitOfWork = IUnitOfWork;
         }
-        public void Add(Footer post)
+        public void Add(Slide slide)
         {
-            _footerRepository.Add(post);
+            _slideRepository.Add(slide);
         }
 
         public void Delete(int id)
         {
-            _footerRepository.Delete(id);
+            _slideRepository.Delete(id);
         }
 
-        public IEnumerable<Footer> GetAll()
+        public IEnumerable<Slide> GetAll()
         {
-            return _footerRepository.GetAll(new string[] { "PostCategory" });
+            return _slideRepository.GetAll(new string[] { "PostCategory" });
         }
 
         //public IEnumerable<Footer> GetAllByTagPaging(string tag, int page, int pageSize, out int totalRow)
@@ -56,23 +55,23 @@ namespace NamCkikuShop.Service
         //    return _footerRepository.GetMultiPaging(x => x.Status, out totalRow, page, pageSize);
         //}
 
-        public Footer GetByID(int id)
+        public Slide GetByID(int id)
         {
-            return _footerRepository.GetSingleById(id);
+            return _slideRepository.GetSingleById(id);
         }
 
         public void SaveChanges()
         {
-            _footerIUnitOfWork.Commit();
+            _IUnitOfWork.Commit();
         }
 
-        public void Update(Footer post)
+        public void Update(Slide slide)
         {
-            _footerRepository.Update(post);
+            _slideRepository.Update(slide);
         }
-        public Footer GetFooter()
+        public IEnumerable<Slide> GetSlide()
         {
-            return _footerRepository.GetSingleByCondition(x => x.ID == CommonConstants.DefaultFooterId);
+            return _slideRepository.GetMulti(x => x.Status);
         }
     }
 }

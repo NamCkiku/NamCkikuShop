@@ -1,5 +1,6 @@
 ﻿namespace NamCkikuShop.Entities.Migrations
 {
+    using Common;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
@@ -19,6 +20,7 @@
         protected override void Seed(NamCkikuShop.Entities.Models.NamCkikuShopDbContext context)
         {
             CreateProductCategorySample(context);
+            CreateSlide(context);
             //  This method will be called after migrating to the latest version.
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
@@ -47,6 +49,46 @@
                 context.SaveChanges();
             }
 
+        }
+        private void CreateFooter(NamCkikuShop.Entities.Models.NamCkikuShopDbContext context)
+        {
+            if (context.Footers.Count(x => x.ID == CommonConstants.DefaultFooterId) == 0)
+            {
+                string content = "";
+            }
+        }
+        private void CreateSlide(NamCkikuShop.Entities.Models.NamCkikuShopDbContext context)
+        {
+            if (context.Slides.Count() == 0)
+            {
+                List<Slide> listSlide = new List<Slide>()
+                {
+                    new Slide() {
+                        Name ="headphones az12",
+                        DisplayOrder =1,
+                        Status =true,
+                        Url ="#",
+                        Image ="~/Content/Client/images/slider/img-04.png",
+                        Content =@"h1>sale up to!</h1>
+                        <h2>30% off</h2>
+                        <div class=""check-box"">
+                            <ul class=""list-unstyled"">
+                                <li>With all products in shop</li>
+                                <li>All combos $69.96</li>
+                            </ul>
+                        </div>" },
+                    new Slide() {
+                        Name ="Samsung s5",
+                        DisplayOrder =2,
+                        Status =true,
+                        Url ="#",
+                        Image ="~/Content/Client/images/slider/img-05.png",
+                    Content=@"<h1>sale up to!</h1>
+                        <h2>50% off</h2>"},
+                };
+                context.Slides.AddRange(listSlide);
+                context.SaveChanges();
+            }
         }
     }
 }
