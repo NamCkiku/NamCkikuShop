@@ -18,6 +18,8 @@ namespace NamCkikuShop.Service
         IEnumerable<Product> GetAll();
         IEnumerable<Product> GetAll(string keyword);
         Product GetByID(int id);
+        IEnumerable<Product> GetLastest(int top);
+        IEnumerable<Product> GetHotProduct(int top);
         void SaveChanges();
     }
     public class ProductService : IProductService
@@ -43,7 +45,7 @@ namespace NamCkikuShop.Service
             if (!string.IsNullOrEmpty(product.Tags))
             {
                 string[] tags = product.Tags.Split(',');
-                for(var i=0;i<tags.Length;i++)
+                for (var i = 0; i < tags.Length; i++)
                 {
                     var tagId = StringHelper.ToUnsignString(tags[i]);
                     if (_tagRepository.Count(x => x.ID == tagId) == 0)
@@ -116,6 +118,16 @@ namespace NamCkikuShop.Service
                 return _productRepository.GetMulti(x => x.Name.Contains(keyword) || x.Description.Contains(keyword));
             else
                 return _productRepository.GetAll();
+        }
+
+        public IEnumerable<Product> GetLastest(int top)
+        {
+            return _productRepository.GetMulti(x => x.Status).OrderByDescending(x => x.CreatedDate).Take(top);
+        }
+
+        public IEnumerable<Product> GetHotProduct(int top)
+        {
+            return _productRepository.GetMulti(x => x.Status && x.HotFlag == true).OrderByDescending(x => x.CreatedDate).Take(top);
         }
     }
 }

@@ -1,0 +1,44 @@
+﻿@model IEnumerable<NamCkikuShop.Web.Models.ViewModels.ProductCategoryViewModel>
+<div class="col-md-3">
+    <div class="mega-container visible-lg visible-md">
+        <div class="navleft-container">
+            <div class="mega-menu-title"><h3>Category</h3></div>
+            <div class="mega-menu-category">
+                <ul class="nav">
+                    @foreach (var item in Model.Where(x => x.ParentID == null))
+                    {
+                        var url = "/" + item.Alias + ".pc-" + item.ID + ".html";
+                        var childCategory = Model.Where(x => x.ParentID == item.ID);
+                        <li class="">
+                            <a href="@url">@item.Name</a>
+                            @if (childCategory.Count() > 0)
+                            {
+                                <div class="wrap-popup column1">
+                                    <div class="popup">
+                                        <h3>brand</h3>
+                                        <ul class="nav">
+                                            @foreach (var childCategoryItems in childCategory)
+                                            {
+                                                var childUrl = "/" + childCategoryItems.Alias + ".pc-" + childCategoryItems.ID + ".html";
+                                                <li><a href="@childUrl">@childCategoryItems.Name</a></li>
+                                            }
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            }
+                        </li>
+
+                    }
+
+                    <li class="nosub"><a href="#">Electtronic</a></li>
+                    <li class="nosub"><a href="#">New arrivals</a></li>
+                    <li class="nosub"><a href="#">Bestseller</a></li>
+                    <li class="more-menu"><a href="#">Bags &amp; Cases</a></li>
+                    <li class="more-menu"><a href="#">Accessories</a></li>
+                    <li class="view-more"><a href="#">More category</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
