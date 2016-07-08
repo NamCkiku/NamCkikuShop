@@ -208,6 +208,7 @@
     <Compile Include="Controllers\FooterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductCategoryController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\SlideController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -2319,6 +2320,7 @@
     <Folder Include="UploadFile\" />
     <Folder Include="Views\Footer\" />
     <Folder Include="Views\ProductCategory\" />
+    <Folder Include="Views\Product\" />
     <Folder Include="Views\Slide\" />
   </ItemGroup>
   <ItemGroup>
