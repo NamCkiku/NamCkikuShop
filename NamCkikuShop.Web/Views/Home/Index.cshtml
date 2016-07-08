@@ -563,7 +563,7 @@
                                 </div>
                             </div>
                             <div class="des-container">
-                                <h2 class="product-name"><a href="#" title="Nunc facilisis">@item.Name</a></h2>
+                                <h2 class="product-name"><a href="@url" title="Nunc facilisis">@item.Name</a></h2>
                                 <div class="price-box">
                                     <p class="special-price">
                                         <span class="price-label">Special Price</span>
@@ -597,6 +597,7 @@
                 <div class="owl">
                     @foreach (var item in hotProduct)
                     {
+                        var url = "/" + item.Alias + ".p-" + item.ID + ".html";
                         <div class='productslider-item item'>
                             <div class="item-inner">
                                 <div class="images-container">
@@ -617,7 +618,7 @@
                                     </div>
                                 </div>
                                 <div class="des-container">
-                                    <h2 class="product-name"><a href="#" title="Nunc facilisis">@item.Name</a></h2>
+                                    <h2 class="product-name"><a href="@url" title="Nunc facilisis">@item.Name</a></h2>
                                     <div class="price-box">
                                         <p class="special-price">
                                             <span class="price-label">Special Price</span>
